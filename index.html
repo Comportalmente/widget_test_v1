@@ -74,6 +74,19 @@
 
 <!-- Script do widget -->
 <script src="https://widget-v3.web.app/js/app.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (window.WidgetAPI) {
+            // Força abrir automaticamente
+            WidgetAPI.open();
+        } else {
+            // Se o widget ainda não carregou, tenta novamente
+            setTimeout(() => {
+                if (window.WidgetAPI) WidgetAPI.open();
+            }, 500);
+        }
+    });
+</script>
 
 </body>
 </html>
