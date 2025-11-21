@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Widget de Pesquisa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS do widget -->
     <link href="https://widget-v3.web.app/css/app.css" rel="stylesheet">
 
     <style>
@@ -16,21 +14,14 @@
             font-family: Montserrat, sans-serif;
         }
 
-        /* Container principal que ajusta tamanho */
-        .widget-container {
+        #widget-wrapper {
             width: 100%;
-            max-width: 400px; /* Desktop */
+            max-width: 400px;
             margin: 0 auto;
         }
 
-        /* Corrigir overflow no mobile */
-        html, body {
-            overflow-x: hidden;
-        }
-
-        /* Mobile: ocupa 100% */
         @media (max-width: 500px) {
-            .widget-container {
+            #widget-wrapper {
                 max-width: 100% !important;
             }
             vue-widget {
@@ -41,9 +32,8 @@
 </head>
 <body>
 
-<div class="widget-container">
-
-    <vue-widget
+<div id="widget-wrapper">
+    <vue-widget 
         widget_position="top-right"
         widget_title="feedback"
         buttons="#092871"
@@ -69,23 +59,21 @@
         is_to_post="true"
         metadata="{}"
     ></vue-widget>
-
 </div>
 
-<!-- Script do widget -->
 <script src="https://widget-v3.web.app/js/app.js"></script>
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        if (window.WidgetAPI) {
-            // Força abrir automaticamente
+
+<script>
+    // O “padrão 1” tinha esta lógica:
+    // esperar o widget carregar e abrir automaticamente
+    function openWidget() {
+        if (window.WidgetAPI && WidgetAPI.open) {
             WidgetAPI.open();
         } else {
-            // Se o widget ainda não carregou, tenta novamente
-            setTimeout(() => {
-                if (window.WidgetAPI) WidgetAPI.open();
-            }, 500);
+            setTimeout(openWidget, 300);
         }
-    });
+    }
+    openWidget();
 </script>
 
 </body>
