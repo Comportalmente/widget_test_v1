@@ -64,13 +64,11 @@
 <script src="https://widget-v3.web.app/js/app.js"></script>
 
 <script>
-    // O “padrão 1” tinha esta lógica:
-    // esperar o widget carregar e abrir automaticamente
     function openWidget() {
         if (window.WidgetAPI && WidgetAPI.open) {
             WidgetAPI.open();
         } else {
-            setTimeout(openWidget, 300);
+            setTimeout(openWidget, 200);
         }
     }
     openWidget();
