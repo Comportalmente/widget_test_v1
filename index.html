@@ -1,59 +1,79 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Widget Responsivo</title>
+    <title>Widget de Pesquisa</title>
+
+    <!-- CSS do widget -->
+    <link href="https://widget-v3.web.app/css/app.css" rel="stylesheet">
 
     <style>
-        /* Faz o widget ocupar toda a largura no mobile */
         body {
             margin: 0;
             padding: 0;
             background: transparent;
+            font-family: Montserrat, sans-serif;
         }
 
+        /* Container principal que ajusta tamanho */
         .widget-container {
             width: 100%;
-            max-width: 420px; /* Máximo no desktop */
+            max-width: 400px; /* Desktop */
             margin: 0 auto;
+        }
+
+        /* Corrigir overflow no mobile */
+        html, body {
+            overflow-x: hidden;
+        }
+
+        /* Mobile: ocupa 100% */
+        @media (max-width: 500px) {
+            .widget-container {
+                max-width: 100% !important;
+            }
+            vue-widget {
+                width: 100% !important;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="widget-container">
-        <div>
-            <link href="https://widget-v3.web.app/css/app.css" rel="stylesheet">
-            <div>
-                <vue-widget
-                    widget_position="top-right"
-                    widget_title="feedback"
-                    buttons="#092871"
-                    width="100%"
-                    height=""
-                    text_buttons="#ffffff"
-                    background="#092871"
-                    texts="#fff"
-                    timeout="0"
-                    width_metric="px"
-                    survey_id="6914bb37e38d6a50891653c3"
-                    close_button="true"
-                    close_permanently="false"
-                    response_background="#e9ecf1"
-                    hidde_after_answer="false"
-                    hidde_when_click_to_close="false"
-                    response_font_color="#0a0a0a"
-                    font_family="'Montserrat', sans-serif"
-                    font_size="large"
-                    text_props="{'bold':'false','italic':'false','underline':'false'}"
-                    border_radius="0"
-                    from='{"name": "", "email": "", "phone":""}'
-                    is_to_post="true"
-                    metadata="{}"
-                />
-            </div>
-            <script src="https://widget-v3.web.app/js/app.js"></script>
-        </div>
-    </div>
+
+<div class="widget-container">
+
+    <vue-widget
+        widget_position="top-right"
+        widget_title="feedback"
+        buttons="#092871"
+        width="100%"
+        height=""
+        text_buttons="#ffffff"
+        background="#092871"
+        texts="#fff"
+        timeout="0"
+        width_metric="percent"
+        survey_id="6914bb37e38d6a50891653c3"
+        close_button="true"
+        close_permanently="false"
+        response_background="#e9ecf1"
+        hidde_after_answer="false"
+        hidde_when_click_to_close="false"
+        response_font_color="#0a0a0a"
+        font_family="'Montserrat', sans-serif"
+        font_size="large"
+        text_props="{'bold':'false','italic':'false','underline':'false'}"
+        border_radius="0"
+        from='{"name": "", "email": "", "phone":""}'
+        is_to_post="true"
+        metadata="{}"
+    ></vue-widget>
+
+</div>
+
+<!-- Script do widget -->
+<script src="https://widget-v3.web.app/js/app.js"></script>
+
 </body>
 </html>
